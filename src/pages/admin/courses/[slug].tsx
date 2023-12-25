@@ -1,10 +1,21 @@
+import { AdminLayout, CourseDetails } from '@rainer/components'
+import Head from 'next/head'
 import React from 'react'
 
 type Props = {}
 
 const CourseDetailsPage = (props: Props) => {
     return (
-        <div>CourseDetailsPage</div>
+        <>
+            <Head>
+                <title>Admin | RainTech</title>
+            </Head>
+            <div>
+                <AdminLayout>
+                    <CourseDetails />
+                </AdminLayout>
+            </div>
+        </>
     )
 }
 
