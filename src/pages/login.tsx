@@ -131,7 +131,7 @@ const Login = (props: Props) => {
 
                     <button type='submit' className="py-2 rounded-md font-medium text-white hover:bg-black bg-sky-500">Login</button>
                     <div className='flex justify-end'>
-                        <Link href='/forgotpassword' className='text-right w-auto text-md hover:text-sky-500'>Forget password?</Link>
+                        <Link href='#' className='text-right w-auto text-md hover:text-sky-500'>Forget password?</Link>
                     </div>
                 </form>
             </div>

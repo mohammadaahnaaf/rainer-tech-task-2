@@ -1,6 +1,5 @@
 import React from 'react'
 import Link from 'next/link'
-import { axiosAPI, axiosRoot } from '@rainer/utils'
 import Router from 'next/router'
 import axios from 'axios'
 import Head from 'next/head'
@@ -34,11 +33,10 @@ const Register = (props: Props) => {
                 password: data.get('password')
             }
 
-            const res = await axios.post('http://localhost:8000/api/user/login', reqData);
+            const res = await axios.post('http://localhost:8000/api/user/register', reqData);
             const { accessToken, refreshToken } = res.data;
             console.log(res.data)
             localStorage.setItem('accessToken', accessToken);
-            // localStorage.setItem('refresh_token', refresh_token);
             setSuccess('Login Done')
 
         } catch (error: any) {
@@ -133,7 +131,7 @@ const Register = (props: Props) => {
 
                     <button type='submit' className="py-2 rounded-md font-medium text-white hover:bg-black bg-sky-500">Create Account</button>
                     <div className='flex justify-end'>
-                        <Link href='/forgotpassword' className='text-right w-auto text-md hover:text-sky-500'>Forget password?</Link>
+                        <Link href='#' className='text-right w-auto text-md hover:text-sky-500'>Forget password?</Link>
                     </div>
                 </form>
             </div>
