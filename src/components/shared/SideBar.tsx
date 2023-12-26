@@ -1,9 +1,17 @@
 import React from 'react'
 import Link from 'next/link'
+import Router from 'next/router'
 
 type Props = {}
 
 export const SideBar = (props: Props) => {
+
+    function handleLogout() {
+        if (typeof window !== 'undefined') {
+            localStorage.removeItem('accessToken')
+            Router.push('/login')
+        }
+    }
     return (
         <div className='max-w-[250px] p-4 w-full bg-black border-t-2 border-[green] min-h-[91vh]'>
             <div className='py-10 flex items-center justify-center'>
@@ -17,7 +25,10 @@ export const SideBar = (props: Props) => {
                 <Link className='bg-[green] bg-opacity-20 hover:bg-opacity-30 rounded-md px-5 py-2' href='/admin/add'>Add Course</Link>
                 <Link className='bg-[green] bg-opacity-20 hover:bg-opacity-30 rounded-md px-5 py-2' href='/admin/courses'>All Courses</Link>
                 <Link className='bg-[green] bg-opacity-20 hover:bg-opacity-30 rounded-md px-5 py-2' href='#'>Settings</Link>
-                <button className='bg-[green] text-left bg-opacity-20 hover:bg-opacity-30 rounded-md px-5 py-2 w-full'>Logout</button>
+                <button className='bg-[green] text-left bg-opacity-20 hover:bg-opacity-30 rounded-md px-5 py-2 w-full'
+                    type='button'
+                    onClick={handleLogout}
+                >Logout</button>
             </div>
         </div>
     )

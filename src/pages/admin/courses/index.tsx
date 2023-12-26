@@ -1,4 +1,5 @@
 import { AdminLayout } from '@rainer/components';
+import { withAuth } from '@rainer/hoc';
 import axios from 'axios';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -6,7 +7,7 @@ import React from 'react'
 
 type Props = {}
 
-const CoursesPage = (props: Props) => {
+const CoursesPages = (props: Props) => {
 
     const [success, setSuccess] = React.useState('')
     const [course, setCourse] = React.useState([])
@@ -88,22 +89,21 @@ const CoursesPage = (props: Props) => {
                 <title>Admin | RainTech</title>
             </Head>
             <AdminLayout>
-                <div className='p-10 w-full grid gap-4'>
+                <div className='p-10 grid gap-3'>
+
                     {!!success && (<h1>{success}</h1>)}
 
                     {course?.map((item: any, index: number) => (
-                        <div key={index} className='text-black'>
+                        <div key={index} className='text-black hover:text-[green] duration-300 hover:scale-95 font-semibold text-lg flex items-center gap-2'>
+                            <p>{index + 1}. </p>
                             <Link href={`/admin/courses/${item._id}`}>{item.name}</Link>
                         </div>
                     ))}
 
-                    {/* <button className='rounded-full p-2 bg-white text-yellow-500' type='submit' onClick={handleSubmit}>Create New Course</button> */}
-                    {/* <button className='rounded-full p-2 bg-green-600 text-black' type='submit' onClick={() => handleUpdate('658885562cfa7ad00b099227')}>Update Course</button> */}
-                    {/* <button className='rounded-full p-2 bg-red-600 text-green-500' type='submit' onClick={() => handleDelete('658885562cfa7ad00b099227')}>Delete Course</button> */}
                 </div>
             </AdminLayout>
         </>
     )
 }
 
-export default CoursesPage;
+export default withAuth(CoursesPages);

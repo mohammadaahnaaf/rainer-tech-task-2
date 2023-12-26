@@ -1,6 +1,5 @@
 import React from 'react'
 import Link from 'next/link'
-import { axiosAPI, axiosRoot } from '@rainer/utils'
 import Router from 'next/router'
 import axios from 'axios'
 import Head from 'next/head'
@@ -12,7 +11,6 @@ const Login = (props: Props) => {
     const [error, setError] = React.useState<string>("")
     const [success, setSuccess] = React.useState("")
     const [showPass, setShowPass] = React.useState("password")
-    const [isAdmin, setIsAdmin] = React.useState(false)
 
     function handleShowPass() {
         if (showPass === "password") {
@@ -35,11 +33,11 @@ const Login = (props: Props) => {
             }
 
             const res = await axios.post('http://localhost:8000/api/user/login', reqData);
-            const { accessToken, refreshToken } = res.data;
+            const { accessToken } = res.data;
             console.log(res.data)
             localStorage.setItem('accessToken', accessToken);
-            // localStorage.setItem('refresh_token', refresh_token);
             setSuccess('Login Done')
+            Router.push('/')
 
         } catch (error: any) {
             if (error.response) {

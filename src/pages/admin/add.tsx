@@ -1,6 +1,7 @@
 "use client"
 
 import { AdminLayout, CourseAdd } from '@rainer/components'
+import { withAuth } from '@rainer/hoc'
 import Head from 'next/head'
 import React from 'react'
 
@@ -18,4 +19,4 @@ const AddCoursePage = (props: Props) => {
         </>
     )
 }
-export default AddCoursePage;
+export default withAuth(AddCoursePage);

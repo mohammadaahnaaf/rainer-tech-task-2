@@ -1,4 +1,5 @@
 import { AdminLayout, CoursesList } from '@rainer/components'
+import { withAuth } from '@rainer/hoc'
 import Head from 'next/head'
 import React from 'react'
 
@@ -17,4 +18,4 @@ const AdminPage = (props: Props) => {
     )
 }
 
-export default AdminPage
+export default withAuth(AdminPage)

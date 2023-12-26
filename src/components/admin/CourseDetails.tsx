@@ -32,7 +32,7 @@ export const CourseDetails = (props: Props) => {
     }
   });
 
-  // get all items 
+  // get single item 
   React.useEffect(() => {
 
     async function getData() {
